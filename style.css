@@ -1,0 +1,45 @@
+main{
+    height:100vh;
+}
+
+main .row:first-child{
+    height:100%;
+}
+
+header{
+    background-color:#333;
+    color:white;
+    text-align:center;
+    padding:10px;
+}
+
+.search{
+    background-color:rgb(212, 212, 212);
+    height:100%;
+    padding:20px;
+}
+
+#search-box{
+    width:80%;
+}
+
+#search-button{
+    display:inline-block;
+    text-align:center;
+    background-color:rgb(60, 60, 255);
+    color:white;
+    border-radius:5px;
+    padding:3px 14px;
+    margin-left:5px;
+    cursor:pointer;
+}
+
+.city-display{
+    padding:20px;
+    height:50%;
+}
+
+.forecast-display{
+    height:100%;
+    padding:20px;
+}
