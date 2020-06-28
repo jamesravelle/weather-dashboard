@@ -1,5 +1,5 @@
 main{
-    height:100vh;
+    height:90vh;
 }
 
 main .row:first-child{
@@ -24,14 +24,7 @@ header{
 }
 
 #search-button{
-    display:inline-block;
-    text-align:center;
-    background-color:rgb(60, 60, 255);
-    color:white;
-    border-radius:5px;
-    padding:3px 14px;
-    margin-left:5px;
-    cursor:pointer;
+
 }
 
 .city-display{
@@ -42,4 +35,8 @@ header{
 .forecast-display{
     height:100%;
     padding:20px;
+}
+
+#uv-index{
+    padding:5px 10px;
 }
