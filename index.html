@@ -20,13 +20,14 @@
                 <input type="text" id="search-box">
                 &nbsp;<div id="search-button" class="btn btn-primary"><i class="fa fa-search"></i></div>
                 <div id="city-output"></div>
+                <a href="#" id="clear-search">[ Clear Search ]</a>
             </div>
             <div class="col-md-9 city-display">
                 <div class="row">
                     <div class="col">
                         <div class="card" style="width: 100%; height:100%;">
                             <div class="card-body">
-                              <h2 class="card-title">City: <span id="city">City</span></h2>
+                              <h2 class="card-title"><span id="city">City</span> (<span id="date">Date</span>)</h2><img id="weather-icon">
                               <p class="card-text">Temperature: <span id="temperature">temp</span></p>
                               <p class="card-text">Humidity: <span id="humidity">humid</span></p>
                               <p class="card-text">Wind Speed: <span id="wind-speed">wind</span></p>

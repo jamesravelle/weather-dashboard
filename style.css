@@ -1,10 +1,4 @@
-main{
-    height:90vh;
-}
 
-main .row:first-child{
-    height:100%;
-}
 
 header{
     background-color:#333;
@@ -23,10 +17,6 @@ header{
     width:80%;
 }
 
-#search-button{
-
-}
-
 .city-display{
     padding:20px;
     height:50%;
@@ -39,4 +29,17 @@ header{
 
 #uv-index{
     padding:5px 10px;
+}
+
+#city-output div:first-child{
+    font-weight:bold;
+}
+
+.forecast{
+    width:18%;
+    margin:1%;
+    background-color:rgb(35, 86, 255);
+    color:white;
+    display:inline-block;
+    padding:10px;
 }
