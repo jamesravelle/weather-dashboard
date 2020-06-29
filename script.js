@@ -29,7 +29,7 @@ function callAPI(x){
     city = x;
     var apiKey = "2823fd191624e0d367262190ea3c1cd4";
     
-    var query = "http://api.openweathermap.org/data/2.5/forecast/?units=imperial&cnt=6&q=" + city + "&appid=" + apiKey;
+    var query = "https://api.openweathermap.org/data/2.5/forecast/?units=imperial&cnt=6&q=" + city + "&appid=" + apiKey;
     
     console.log(query);
     $.ajax({
