@@ -11,7 +11,7 @@ main{
 }
 
 header{
-    background-color:white;
+    background: rgb(255,255,255, .95);
     color:rgb(35, 86, 255);
     text-align:center;
     padding:10px;
