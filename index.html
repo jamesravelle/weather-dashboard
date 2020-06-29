@@ -25,20 +25,22 @@
             <div class="col-md-9 city-display">
                 <div class="row">
                     <div class="col">
-                        <div class="card" style="width: 100%; height:100%;">
+                        <div class="card main-display" style="width: 100%; height:100%; border:0;">
                             <div class="card-body">
-                              <h2 class="card-title"><span id="city">City</span> (<span id="date">Date</span>)</h2><img id="weather-icon" style="float:right;">
-                              <p class="card-text">Temperature: <span id="temperature">temp</span></p>
-                              <p class="card-text">Humidity: <span id="humidity">humid</span></p>
-                              <p class="card-text">Wind Speed: <span id="wind-speed">wind</span></p>
-                              <p class="card-text">UV Index: <span id="uv-index">UV</span></p>
+                              <h2 class="card-title"><span id="city">City</span> (<span id="date"></span>)</h2><img id="weather-icon">
+                              <p class="card-text">Temperature: <span id="temperature"></span></p>
+                              <p class="card-text">Humidity: <span id="humidity"></span></p>
+                              <p class="card-text">Wind Speed: <span id="wind-speed"></span></p>
+                              <p class="card-text">UV Index: <span id="uv-index"></span></p>
                             </div>
                           </div>
                     </div>
                 </div>
                 <div class="row forecast-display">
-                    <div class="col">
-                        <h5>5 Day Forecast</h5>
+                    <div class="col" style="padding:0;">
+                      <div class="card" style="width: 100%; height:100%;">
+                        <div class="card-body">
+                        <h5 class="card-title">5 Day Forecast</h5>
                         <div id="forecast-output">
 
                         </div>

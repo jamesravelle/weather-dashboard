@@ -14,6 +14,7 @@ if(cityStorage === null){
 console.log(cityStorage);
 
 function outputDate(x){
+    // Function to retrieve date + amount of days in future 
     var targetDate = new Date();
     targetDate.setDate(targetDate.getDate() + x);
     console.log(targetDate);
@@ -113,12 +114,16 @@ function getUV(x){
         $('#uv-index').text(uv);
     })
 }
+
 function setStorage(){
     localStorage.setItem("cityStorage", JSON.stringify(cityStorage));
 }
 
 function searchHistory(){
     $('#city-output').empty();
+    if(cityStorage.length > 10){
+        cityStorage.shift();
+    }
     for(var i = 0; i < cityStorage.length; i++){
         var cityDiv = $('<div>');
         cityDiv.text(cityStorage[i]);
