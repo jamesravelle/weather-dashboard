@@ -13,20 +13,6 @@ if(cityStorage === null){
 }
 console.log(cityStorage);
 
-
-$('#search-button').on("click", function(){
-    city = $('#search-box').val();
-    cityStorage.push(city);
-    setStorage();
-    searchHistory();
-    callAPI(city);
-})
-
-$('#clear-search').on("click", function(e){
-    e.preventDefault();
-    localStorage.clear();
-})
-
 function outputDate(x){
     var targetDate = new Date();
     targetDate.setDate(targetDate.getDate() + x);
@@ -51,13 +37,15 @@ function callAPI(x){
     }).then(function(response){
         console.log(response);
         $('#city').text(city);
+        // Empty current forecast output
+        $('#forecast-output').empty();
         for(var i = 0; i < response.list.length; i++){
             if (i === 0){
                 // Set current date using outputDate function
                 $('#date').text(outputDate(i));
 
                 // Output current weather
-                $('#temperature').text(response.list[i].main.temp);
+                $('#temperature').text(parseInt(response.list[i].main.temp));
                 $('#humidity').text(response.list[i].main.humidity);
                 $('#wind-speed').text(response.list[i].wind.speed);
                 
@@ -77,12 +65,11 @@ function callAPI(x){
                 newDiv.append(dateObj);
 
                 // Image
-
                 var weatherIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/" + response.list[i].weather[0].icon + "@2x.png")
                 newDiv.append(weatherIcon);
 
                 // Temperature
-                var temp = $('<div>').text("Temp: " + response.list[i].main.temp);
+                var temp = $('<div>').text("Temp: " + parseInt(response.list[i].main.temp));
                 newDiv.append(temp);
 
                 // Humidity
@@ -97,11 +84,33 @@ function callAPI(x){
 }
 
 function getUV(x){
+    /* Output UV value with color coding
+        LOW        1-2 #52CAFF
+        MODERATE   3-5 #2EFF63
+        HIGH       6-7 #FF7400
+        VERY HIGH  8-10 #FF0000
+        EXTREME > 10 #8000FF
+    */
     $.ajax({
         url:x,
         method:"GET"
     }).then(function(response){
-        $('#uv-index').text(response.value)
+        var uv = response.value;
+        console.log(uv);
+        var bgColor = "";
+        if(uv < 3){
+            bgColor = '#52CAFF'
+        } else if(uv > 3 && uv < 5){
+            bgColor = '#2EFF63'
+        } else if(uv > 5 && uv < 8){
+            bgColor = '#FF7400'
+        } else if(uv > 8 && uv < 10){
+            bgColor = '#FF0000'
+        } else {
+            bgColor = '#FF00F3'
+        }
+        $('#uv-index').css("background-color", bgColor);
+        $('#uv-index').text(uv);
     })
 }
 function setStorage(){
@@ -113,8 +122,32 @@ function searchHistory(){
     for(var i = 0; i < cityStorage.length; i++){
         var cityDiv = $('<div>');
         cityDiv.text(cityStorage[i]);
+        cityDiv.addClass('city-list');
+        if(i === (cityStorage.length - 1)){
+            cityDiv.addClass('bold-font');
+        }
         $('#city-output').prepend(cityDiv);
     }
 }
+
+$(document).on("click", ".city-list" , function() {
+    $('.city-list').removeClass('bold-font');
+    $(this).addClass('bold-font');
+    callAPI($(this).html());
+    console.log("OKAY");
+});
+
+$('#search-button').on("click", function(){
+    city = $('#search-box').val();
+    cityStorage.push(city);
+    setStorage();
+    searchHistory();
+    callAPI(city);
+})
+
+$('#clear-search').on("click", function(e){
+    localStorage.clear();
+    location.reload();
+})
 
 });

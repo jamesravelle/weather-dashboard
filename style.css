@@ -29,17 +29,33 @@ header{
 
 #uv-index{
     padding:5px 10px;
-}
-
-#city-output div:first-child{
-    font-weight:bold;
+    color:black;
 }
 
 .forecast{
     width:18%;
-    margin:1%;
+    margin-right:2%;
     background-color:rgb(35, 86, 255);
     color:white;
     display:inline-block;
     padding:10px;
+    border-radius:10px;
+}
+
+.city-display .card{
+    background-color:rgb(35, 86, 255);
+    color:white;
+}
+
+.bold-font{
+    font-weight:bold;
+}
+
+.city-list{
+    cursor:pointer;
+    color:darkblue;
+}
+
+.city-list:hover{
+    color:rgb(35, 86, 255);
 }
