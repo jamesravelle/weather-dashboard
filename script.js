@@ -3,7 +3,6 @@ $( document ).ready(function() {
 // Set global variables
 var city = "";
 
-
 var cityStorage = JSON.parse(localStorage.getItem("cityStorage")); 
 if(cityStorage === null){
     cityStorage = [];
@@ -11,7 +10,6 @@ if(cityStorage === null){
     searchHistory();
     callAPI(cityStorage[cityStorage.length - 1]);
 }
-console.log(cityStorage);
 
 function outputDate(x){
     // Function to retrieve date + amount of days in future 
@@ -51,7 +49,7 @@ function callAPI(x){
                 $('#wind-speed').text(response.list[i].wind.speed);
                 
                 // Get weather icon
-                var weatherimg = "http://openweathermap.org/img/wn/" + response.list[i].weather[0].icon + "@2x.png"
+                var weatherimg = "https://openweathermap.org/img/wn/" + response.list[i].weather[0].icon + "@2x.png"
                 $('#weather-icon').attr("src", weatherimg);
 
                 // Get UV value using separate API
