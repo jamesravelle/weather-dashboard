@@ -53,7 +53,7 @@ function callAPI(x){
                 $('#weather-icon').attr("src", weatherimg);
 
                 // Get UV value using separate API
-                var uvQuery = "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + response.city.coord.lat +"&lon=" + response.city.coord.lon
+                var uvQuery = "https://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + response.city.coord.lat +"&lon=" + response.city.coord.lon
                 getUV(uvQuery);
             } else {
                 // Ouput date, temperature and humidity to future weather
