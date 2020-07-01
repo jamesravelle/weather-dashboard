@@ -64,7 +64,7 @@ function callAPI(x){
                 newDiv.append(dateObj);
 
                 // Image
-                var weatherIcon = $('<img>').attr("src", "http://openweathermap.org/img/wn/" + response.list[i].weather[0].icon + "@2x.png")
+                var weatherIcon = $('<img>').attr("src", "https://openweathermap.org/img/wn/" + response.list[i].weather[0].icon + "@2x.png")
                 newDiv.append(weatherIcon);
 
                 // Temperature
