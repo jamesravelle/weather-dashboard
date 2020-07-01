@@ -15,7 +15,6 @@ function outputDate(x){
     // Function to retrieve date + amount of days in future 
     var targetDate = new Date();
     targetDate.setDate(targetDate.getDate() + x);
-    console.log(targetDate);
     var month = targetDate.getMonth() + 1;
     var day = targetDate.getDate();
     var year = targetDate.getFullYear();
@@ -33,8 +32,7 @@ function callAPI(x){
     $.ajax({
         url:query,
         method:"GET"
-    }).then(function(response){
-        console.log(response);
+    }).then(function(response){ 
         $('#city').text(city);
         // Empty current forecast output
         $('#forecast-output').empty();
@@ -137,7 +135,6 @@ $(document).on("click", ".city-list" , function() {
     $('.city-list').removeClass('bold-font');
     $(this).addClass('bold-font');
     callAPI($(this).html());
-    console.log("OKAY");
 });
 
 $('#search-button').on("click", function(){
@@ -152,5 +149,38 @@ $('#clear-search').on("click", function(e){
     localStorage.clear();
     location.reload();
 })
+
+// Current location code
+function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
+  }
+  
+  function showPosition(position) {
+    var geoAPI = "cedbd416f0e54e32a4d7eadfd8b2e680";
+    var locationQuery = "https://api.opencagedata.com/geocode/v1/json?q=" + position.coords.latitude + "+" + position.coords.longitude + "&key=" + geoAPI; 
+    callLocationAPI(locationQuery);
+  }
+  
+  function callLocationAPI(x){
+    $.ajax({
+        url:x,
+        method:"GET"
+    }).then(function(response){
+        var currentCity = response.results[0].components.city;
+        cityStorage.push(currentCity);
+        setStorage();
+        searchHistory();
+        callAPI(currentCity);
+    })
+  }
+  
+  $('#current-location').on("click", function(){
+    getLocation();
+  })
+  
 
 });
