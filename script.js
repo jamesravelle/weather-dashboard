@@ -182,5 +182,5 @@ function getLocation() {
     getLocation();
   })
   
-
+  getLocation();
 });
